@@ -1,0 +1,34 @@
+{
+  "name": "RocketQ",
+  "version": "1.0.0",
+  "description": "Projeto desenvolvido para gerenciar perguntas anônimas de usuários direcionadas ao dono da página. Projeto desenvolvido na semana NLW Rocketseat na missão discover",
+  "main": "./src/server.js",
+  "scripts": {
+    "start": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anderdam/rocketQ-project.git"
+  },
+  "keywords": [],
+  "author": "Anderson Damasceno - ADappsdev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anderdam/rocketQ-project/issues"
+  },
+  "homepage": "https://github.com/anderdam/rocketQ-project#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.15.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2"
+  }
+}

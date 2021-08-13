@@ -1,25 +1,43 @@
 const Database = require('../db/config');
 
 module.exports = {
-  async create(req, res) {
-    const db = await Database();
-    const pass = req.body.password;
-    let roomId = '';
+    async create(req, res) {
+        const db = await Database();
+        const pass = req.body.password;
+        let roomId = '';
+        let isRoom = true;
 
-    for (let i = 0; i < 6; i++) {
-      roomId += Math.floor(Math.random() * 10).toString();
-    }
+        while (isRoom) {
+            /* Gera o número da sala */
+            for (let i = 0; i < 6; i++) {
+                roomId += Math.floor(Math.random() * 10).toString();
+            }
 
-    await db.run(`INSERT INTO rooms (
-      id,
-      pass
-      ) VALUES (
-          ${parseInt(roomId)},
-          ${pass}
-    )`);
+            /* Verificar se o número da sala já existe */
+            const roomsExistIds = await db.all(`SELECT id FROM rooms`);
+            isRoom = roomsExistIds.some(
+                (roomExistId) => roomExistId === roomId
+            );
 
-    db.close();
+            if (!isRoom) {
+                /* Insere a sala no bd */
+                await db.run(`INSERT INTO rooms (
+              id,
+              pass
+              ) VALUES (
+                  ${parseInt(roomId)},
+                  ${pass}
+            )`);
+            }
+        }
 
-    res.redirect(`/room/${roomId}`);
-  },
+        await db.close();
+
+        res.redirect(`/room/${roomId}`);
+    },
+
+    open(req, res) {
+        const roomId = req.params.room;
+        res.render('room', { roomId: roomId });
+    },
 };

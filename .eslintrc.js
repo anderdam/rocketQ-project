@@ -11,5 +11,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'no-plusplus': [2, { allowForLoopAfterthoughts: true }],
+    'allowTemplateLiterals': true,
   },
 };

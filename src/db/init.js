@@ -1,8 +1,8 @@
-const Database = require('./config');
+const Database = require("./config")
 
 const initDb = {
-    async init() {
-        const db = await Database();
+    async init(){
+        const db = await Database()
 
         await db.exec(`CREATE TABLE rooms (
             id INTEGER PRIMARY KEY,
@@ -16,8 +16,11 @@ const initDb = {
             room INT
         )`);
 
-        await db.close();
-    },
-};
+        await db.close()
+    }
+}
 
 initDb.init();
+
+
+
